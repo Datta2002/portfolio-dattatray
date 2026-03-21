@@ -1,5 +1,5 @@
 import { CONTACT_ITEMS } from "../data/contactData";
-import { useState, useEffect, useRef } from "react";
+import { useState} from "react";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
