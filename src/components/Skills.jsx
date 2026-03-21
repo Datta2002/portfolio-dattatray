@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { SKILLS_DATA } from "../data/skillsData";
 
 function Skills() {

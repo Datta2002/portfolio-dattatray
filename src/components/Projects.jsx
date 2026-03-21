@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { PROJECTS_DATA } from "../data/projectsData";
 
 function Projects() {

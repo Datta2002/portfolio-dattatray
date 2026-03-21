@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { NAV_LINKS } from "../data/navLinks";
 function Footer() {
   const scrollTo = (id) => document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
@@ -24,7 +24,7 @@ function Footer() {
             <div className="mb-3">
               <a href="https://github.com/Datta2002" className="social-icon" title="GitHub">🐙</a>
               <a href="https://www.linkedin.com/in/dattatray-dudhamogre/" className="social-icon" title="LinkedIn">💼</a>
-              <a href="#" className="social-icon" title="Twitter">🐦</a>
+              <a href="#home" className="social-icon" title="Twitter">🐦</a>
               <a href="mailto:dattatray.dudhamogre@gmail.com" className="social-icon" title="Email">✉️</a>
             </div>
             <p style={{ fontSize: "0.82rem", color: "var(--text-muted)", lineHeight: 1.7 }}>
