@@ -1,20 +1,44 @@
 import { CONTACT_ITEMS } from "../data/contactData";
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser"; // ✅ ADDED
+
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
- 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
- 
+
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // EmailJS integration point
-    // emailjs.send(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY)
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
-    setForm({ name: "", email: "", message: "" });
+
+    // 🔥 EMAILJS INTEGRATION START
+    emailjs
+      .send(
+        "service_0j8oj34",   // 🔁 replace
+        "template_uixo6vr",  // 🔁 replace
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        "zDvkdDrFIufksuRqe"    // 🔁 replace
+      )
+      .then(
+        () => {
+          setSent(true);
+          setForm({ name: "", email: "", message: "" });
+
+          setTimeout(() => setSent(false), 3000);
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          alert("Failed to send message ❌");
+        }
+      );
+    // 🔥 EMAILJS INTEGRATION END
   };
- 
+
   return (
     <section id="contact" className="contact-section section-padding">
       <div className="container">
@@ -26,12 +50,14 @@ function Contact() {
             Have a project in mind or want to discuss an opportunity? I'd love to hear from you.
           </p>
         </div>
+
         <div className="row g-4 align-items-start">
           <div className="col-lg-5">
             <div className="contact-info-card">
               <h4 style={{ color: "var(--text-primary)", fontWeight: 700, marginBottom: "1.5rem", fontSize: "1.1rem" }}>
                 Contact Information
               </h4>
+
               {CONTACT_ITEMS.map((item) => (
                 <a key={item.label} href={item.href} className="contact-item" style={{ color: "inherit" }}>
                   <div className="contact-item-icon">{item.icon}</div>
@@ -41,6 +67,7 @@ function Contact() {
                   </div>
                 </a>
               ))}
+
               <div style={{ marginTop: "1.5rem", padding: "1.2rem", background: "var(--color-blue-dim)", borderRadius: "12px", border: "1px solid rgba(56,189,248,0.2)" }}>
                 <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: 0, lineHeight: 1.7 }}>
                   ✦ Currently open to full-time roles, freelance projects, and exciting collaborations.
@@ -48,11 +75,13 @@ function Contact() {
               </div>
             </div>
           </div>
+
           <div className="col-lg-7">
             <div className="contact-form-card">
               <h4 style={{ color: "var(--text-primary)", fontWeight: 700, marginBottom: "1.5rem", fontSize: "1.1rem" }}>
                 Send a Message
               </h4>
+
               <form onSubmit={handleSubmit}>
                 <div className="row g-3">
                   <div className="col-md-6">
@@ -69,6 +98,7 @@ function Contact() {
                       />
                     </div>
                   </div>
+
                   <div className="col-md-6">
                     <div className="form-group">
                       <label className="form-label-custom">Email Address</label>
@@ -84,6 +114,7 @@ function Contact() {
                     </div>
                   </div>
                 </div>
+
                 <div className="form-group">
                   <label className="form-label-custom">Message</label>
                   <textarea
@@ -96,10 +127,16 @@ function Contact() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn-orange w-100" style={{ justifyContent: "center", padding: "0.85rem" }}>
+
+                <button
+                  type="submit"
+                  className="btn-orange w-100"
+                  style={{ justifyContent: "center", padding: "0.85rem" }}
+                >
                   {sent ? "✓ Message Sent!" : "Send Message →"}
                 </button>
               </form>
+
             </div>
           </div>
         </div>
@@ -107,4 +144,5 @@ function Contact() {
     </section>
   );
 }
+
 export default Contact;
