@@ -42,7 +42,7 @@ function About() {
             <div className="exp-card">
               <div className="exp-icon">💻</div>
               <div className="exp-company">RS Softtecs Solutions Pvt. Ltd.</div>
-              <div className="exp-role">Associate Java Developer</div>
+              <div className="exp-role">Associate Software Developer & Trainer</div>
               <div className="exp-date">Jan 2025 – Present · 1.3 Year · On-site</div>
               <p className="exp-desc">
                 Developed and maintained scalable backend applications using Java and Spring Boot. Built REST APIs and integrated frontend systems for seamless user experience. Trained 250+ students in Java Full Stack development, focusing on real-world project implementation and problem-solving skills. Worked on Linux environments and Docker for application deployment and containerization.

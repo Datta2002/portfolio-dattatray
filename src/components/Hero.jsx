@@ -12,7 +12,7 @@ function Hero() {
           <div className="col-lg-6 fade-in-up">
             <div className="hero-badge">
               <span className="hero-badge-dot" />
-              Available for Full-Time Roles
+              Open to Freelance and Part-Time Work
             </div>
             <h1 className="hero-name">
               Hi, I'm <br />

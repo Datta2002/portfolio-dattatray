@@ -35,7 +35,7 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <p className="footer-copy">© 2026 <span>Dattatray</span>. All rights reserved.</p>
-          <p className="footer-copy">Crafted with <span>♥</span> using React & Spring Boot</p>
+          <p className="footer-copy">Turning ideas into reality, one line of code at a time 💡💻</p>
         </div>
       </div>
     </footer>
