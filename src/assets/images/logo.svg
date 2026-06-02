@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
+  <!-- Sleek visual bracket elements to signify java/code backend -->
+  <text x="12" y="27" font-family="'Poppins', sans-serif" font-size="24" font-weight="900" fill="#38bdf8">&lt;</text>
+  <text x="32" y="26" font-family="'Poppins', sans-serif" font-size="18" font-weight="800" fill="#e2e8f0">DD</text>
+  <text x="60" y="27" font-family="'Poppins', sans-serif" font-size="24" font-weight="900" fill="#f97316">/&gt;</text>
+</svg>

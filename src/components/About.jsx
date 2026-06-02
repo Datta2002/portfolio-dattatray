@@ -1,6 +1,17 @@
 import React from "react";
 
 function About() {
+  // Dynamically calculate experience based on Jan 15, 2025 joining date
+  const calculateExperience = () => {
+    const startDate = new Date("2025-01-15");
+    const currentDate = new Date();
+    const diffTime = Math.abs(currentDate - startDate);
+    const diffDays = diffTime / (1000 * 60 * 60 * 24);
+    return (diffDays / 365.25).toFixed(1);
+  };
+
+  const expYears = calculateExperience();
+
   return (
     <section id="about" className="about-section section-padding">
       <div className="container">
@@ -9,44 +20,51 @@ function About() {
           <h2 className="section-title">Who I Am</h2>
           <div className="divider mx-auto" />
         </div>
-        <div className="row g-4 align-items-start">
+        
+        {/* Main Info Row (Equal Heights) */}
+        <div className="row g-4 align-items-stretch">
           <div className="col-lg-7">
-            <div className="about-text-card mb-4">
+            <div className="about-text-card h-100">
+              <h3 style={{ color: "var(--color-blue)", fontSize: "1.2rem", fontWeight: 700, marginBottom: "1rem" }}>
+                Developer & Educator
+              </h3>
               <p className="about-p mb-3">
-                I’m a passionate Java Full Stack Developer with hands-on experience in building scalable applications using Spring Boot, Django, and modern web technologies. I have trained 250+ students in Java Full Stack development, helping them understand core programming concepts, backend development, and real-world project implementation.
+                I am a passionate <strong>Java Full Stack Developer & Technical Trainer</strong> with experience building scalable backend architectures and guiding aspiring engineers. Currently based in Pune, India, I specialize in designing microservices using <strong>Spring Boot</strong>, developing custom database models with <strong>MySQL / Hibernate</strong>, and setting up modern development pipelines.
               </p>
               <p className="about-p mb-3">
-                Along with training, I have practical experience working as a developer, where I contributed to building backend systems, developing REST APIs, and working on full-stack projects. My experience also includes working with Linux environments and Docker, giving me a strong understanding of system-level operations and containerization.
+                Driven by a deep love for teaching and software craftsmanship, I have successfully trained and mentored over <strong>250+ students</strong> in Java Full Stack development. I design hands-on curricula covering database modeling, RESTful APIs, and integration with modern frontend ecosystems like React and Angular.
               </p>
               <p className="about-p">
-                I enjoy solving complex problems and continuously improving my technical skills. I am highly motivated to work on impactful projects and grow in areas like backend development, cloud technologies, and scalable system design.
+                I believe that clean, readable code and robust system architecture go hand-in-hand. Whether coding backend REST APIs or conducting training bootcamps, my goal is to deliver excellence and bridge the gap between technical complexity and real-world implementation.
               </p>
-            </div>
-            <div className="row g-3">
-              {[
-                { value: "5+", label: "Projects Completed" },
-                { value: "1+ Year", label: "Java Developer" },
-                { value: "20+", label: "Technologies" },
-                { value: "250+", label: "Students Trained in java" }
-              ].map((s) => (
-                <div key={s.label} className="col-6 col-sm-3">
-                  <div className="stat-pill">
-                    <div className="stat-pill-value">{s.value}</div>
-                    <div className="stat-pill-label">{s.label}</div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
           <div className="col-lg-5">
             <div className="exp-card">
-              <div className="exp-icon">💻</div>
               <div className="exp-company">RS Softtecs Solutions Pvt. Ltd.</div>
               <div className="exp-role">Associate Software Developer & Trainer</div>
-              <div className="exp-date">Jan 2025 – Present · 1.3 Year · On-site</div>
-              <p className="exp-desc">
-                Developed and maintained scalable backend applications using Java and Spring Boot. Built REST APIs and integrated frontend systems for seamless user experience. Trained 250+ students in Java Full Stack development, focusing on real-world project implementation and problem-solving skills. Worked on Linux environments and Docker for application deployment and containerization.
-              </p>
+              <div className="exp-date">Jan 2025 – Present · {expYears} Years · On-site</div>
+              
+              <div className="mt-3">
+                <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", fontWeight: 600, marginBottom: "0.5rem" }}>
+                  Key Responsibilities:
+                </p>
+                <ul style={{ color: "var(--text-secondary)", fontSize: "0.85rem", paddingLeft: "1.2rem", margin: "0.5rem 0", lineHeight: 1.6 }}>
+                  <li style={{ marginBottom: "0.4rem" }}>
+                    <strong>Java Backend:</strong> Design and build RESTful APIs and secure microservices using Spring Boot, Spring Security, and JPA/Hibernate.
+                  </li>
+                  <li style={{ marginBottom: "0.4rem" }}>
+                    <strong>Full-Stack Integration:</strong> Deliver responsive interfaces in React/Angular and link them with Spring REST endpoints.
+                  </li>
+                  <li style={{ marginBottom: "0.4rem" }}>
+                    <strong>DevOps & Systems:</strong> Manage Linux deployments, containerize applications with Docker, and organize Git version control.
+                  </li>
+                  <li style={{ marginBottom: "0.4rem" }}>
+                    <strong>Technical Training:</strong> Instructed 250+ trainees on object-oriented programming, data structures, and database principles.
+                  </li>
+                </ul>
+              </div>
+
               <div className="mt-3">
                 {["Java", "Spring Boot", "REST API", "MySQL", "Linux", "Docker", "Git"].map((t) => (
                 <span key={t} className="exp-tag">{t}</span>
@@ -55,6 +73,24 @@ function About() {
             </div>
           </div>
         </div>
+
+        {/* Stats metrics row below the cards */}
+        <div className="row g-3 mt-4">
+          {[
+            { value: "5+", label: "Projects Built" },
+            { value: `${expYears} Years`, label: "Experience" },
+            { value: "20+", label: "Technologies" },
+            { value: "250+", label: "Students Trained" }
+          ].map((s) => (
+            <div key={s.label} className="col-6 col-sm-3">
+              <div className="stat-pill">
+                <div className="stat-pill-value">{s.value}</div>
+                <div className="stat-pill-label">{s.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

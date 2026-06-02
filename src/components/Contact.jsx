@@ -1,18 +1,32 @@
 import { CONTACT_ITEMS } from "../data/contactData";
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser"; // ✅ ADDED
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [toast, setToast] = useState({ show: false, message: "", type: "success" });
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
+  const showToastNotification = (message, type) => {
+    setToast({ show: true, message, type });
+    setTimeout(() => {
+      setToast({ show: false, message: "", type: "success" });
+    }, 4000);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 🔥 EMAILJS INTEGRATION START
+    if (!form.name || !form.email || !form.message) {
+      showToastNotification("Please complete all fields.", "error");
+      return;
+    }
+
+    setSending(true);
+
     emailjs
       .send(
         "service_0j8oj34",   // 🔁 replace
@@ -26,17 +40,16 @@ function Contact() {
       )
       .then(
         () => {
-          setSent(true);
+          setSending(false);
           setForm({ name: "", email: "", message: "" });
-
-          setTimeout(() => setSent(false), 3000);
+          showToastNotification("Message sent successfully!", "success");
         },
         (error) => {
+          setSending(false);
           console.error("EmailJS Error:", error);
-          alert("Failed to send message ❌");
+          showToastNotification("Failed to send. Please try again.", "error");
         }
       );
-    // 🔥 EMAILJS INTEGRATION END
   };
 
   return (
@@ -51,16 +64,18 @@ function Contact() {
           </p>
         </div>
 
-        <div className="row g-4 align-items-start">
+        <div className="row g-4 align-items-stretch">
           <div className="col-lg-5">
-            <div className="contact-info-card">
+            <div className="contact-info-card h-100">
               <h4 style={{ color: "var(--text-primary)", fontWeight: 700, marginBottom: "1.5rem", fontSize: "1.1rem" }}>
                 Contact Information
               </h4>
 
               {CONTACT_ITEMS.map((item) => (
                 <a key={item.label} href={item.href} className="contact-item" style={{ color: "inherit" }}>
-                  <div className="contact-item-icon">{item.icon}</div>
+                  <div className="contact-item-icon">
+                    <i className={item.icon} style={{ color: "var(--color-blue)" }}></i>
+                  </div>
                   <div>
                     <div className="contact-item-label">{item.label}</div>
                     <div className="contact-item-value">{item.value}</div>
@@ -70,14 +85,14 @@ function Contact() {
 
               <div style={{ marginTop: "1.5rem", padding: "1.2rem", background: "var(--color-blue-dim)", borderRadius: "12px", border: "1px solid rgba(56,189,248,0.2)" }}>
                 <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", margin: 0, lineHeight: 1.7 }}>
-                  ✦ Currently open to full-time roles, freelance projects, and exciting collaborations.
+                  <i className="fa-solid fa-circle-info" style={{ color: "var(--color-blue)", marginRight: "6px" }}></i> Currently open to full-time roles, freelance projects, and exciting collaborations.
                 </p>
               </div>
             </div>
           </div>
 
           <div className="col-lg-7">
-            <div className="contact-form-card">
+            <div className="contact-form-card h-100">
               <h4 style={{ color: "var(--text-primary)", fontWeight: 700, marginBottom: "1.5rem", fontSize: "1.1rem" }}>
                 Send a Message
               </h4>
@@ -93,7 +108,7 @@ function Contact() {
                         value={form.name}
                         onChange={handleChange}
                         className="form-input-custom"
-                        placeholder="name"
+                        placeholder="John Doe"
                         required
                       />
                     </div>
@@ -108,7 +123,7 @@ function Contact() {
                         value={form.email}
                         onChange={handleChange}
                         className="form-input-custom"
-                        placeholder="abc@gmail.com"
+                        placeholder="john@example.com"
                         required
                       />
                     </div>
@@ -132,8 +147,13 @@ function Contact() {
                   type="submit"
                   className="btn-orange w-100"
                   style={{ justifyContent: "center", padding: "0.85rem" }}
+                  disabled={sending}
                 >
-                  {sent ? "✓ Message Sent!" : "Send Message →"}
+                  {sending ? "Sending Message..." : (
+                    <>
+                      Send Message <i className="fa-solid fa-paper-plane" style={{ marginLeft: "8px" }}></i>
+                    </>
+                  )}
                 </button>
               </form>
 
@@ -141,6 +161,20 @@ function Contact() {
           </div>
         </div>
       </div>
+
+      {/* Dynamic Toast Alert Notification */}
+      {toast.show && (
+        <div className={`contact-toast ${toast.type === "error" ? "error" : ""}`}>
+          <span className="contact-toast-icon">
+            {toast.type === "success" ? (
+              <i className="fa-solid fa-circle-check" style={{ color: "var(--color-blue)" }}></i>
+            ) : (
+              <i className="fa-solid fa-circle-exclamation" style={{ color: "var(--color-orange)" }}></i>
+            )}
+          </span>
+          <span className="contact-toast-text">{toast.message}</span>
+        </div>
+      )}
     </section>
   );
 }

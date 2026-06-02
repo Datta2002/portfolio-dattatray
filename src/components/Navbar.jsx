@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { NAV_LINKS } from "../data/navLinks";
+import logoImg from "../assets/images/logo.png"; // ✅ Updated from logo.svg
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false); 
   const [active, setActive] = useState("home");
  
   useEffect(() => {
@@ -24,8 +25,8 @@ function Navbar() {
       <nav className={`navbar-custom ${scrolled ? "scrolled" : ""}`}>
         <div className="container">
           <div className="d-flex align-items-center justify-content-between">
-            <a href="#home" className="navbar-logo" onClick={() => handleNav("#home")}>
-              DD<span>@Ignite</span>
+            <a href="#home" className="navbar-logo d-flex align-items-center" onClick={() => handleNav("#home")}>
+              <img src={logoImg} alt="Logo" style={{ height: "75px", width: "auto", marginTop: "-18px", marginBottom: "-18px", display: "block" }} />
             </a>
             <div className="d-none d-lg-flex align-items-center gap-1">
               {NAV_LINKS.map((l) => (
@@ -39,7 +40,7 @@ function Navbar() {
                 </a>
               ))}
               <button className="btn-orange ms-3" onClick={() => handleNav("#contact")}>
-                Let's Talk ✦
+                Let's Talk <i className="fa-solid fa-comments" style={{ marginLeft: "4px" }}></i>
               </button>
             </div>
             <button className="hamburger d-lg-none" onClick={() => setMobileOpen(true)} aria-label="Open menu">
@@ -62,7 +63,9 @@ function Navbar() {
             {l.label}
           </a>
         ))}
-        <button className="btn-orange mt-3" onClick={() => handleNav("#contact")}>Let's Talk ✦</button>
+        <button className="btn-orange mt-3" onClick={() => handleNav("#contact")}>
+          Let's Talk <i className="fa-solid fa-comments" style={{ marginLeft: "4px" }}></i>
+        </button>
       </div>
     </>
   );

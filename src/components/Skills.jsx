@@ -13,17 +13,41 @@ function Skills() {
             A curated toolkit built through real-world projects and continuous learning.
           </p>
         </div>
-        <div className="row g-4">
+
+        {/* Detailed Skills Categories with Single Progress Bar and Badges */}
+        <div className="row g-4 fade-in">
           {SKILLS_DATA?.map((cat, i) => (
             <div key={cat.name} className="col-md-6 col-lg-4" style={{ animationDelay: `${i * 0.1}s` }}>
               <div className="skill-card">
-                <div className="skill-card-header">
-                  <div className="skill-cat-icon">{cat.icon}</div>
+                <div className="skill-card-header mb-3">
+                  <div className="skill-cat-icon">
+                    <i className={cat.icon} style={{ color: "var(--color-blue)" }}></i>
+                  </div>
                   <div className="skill-cat-name">{cat.name}</div>
                 </div>
-                <div>
+
+                {/* Overall category proficiency bar */}
+                <div className="mb-4">
+                  <div className="d-flex justify-content-between mb-1" style={{ fontSize: "0.82rem" }}>
+                    <span style={{ fontWeight: 600, color: "var(--text-secondary)" }}>Overall Mastery</span>
+                    <span style={{ color: "var(--color-blue)", fontWeight: 600 }}>{cat.level}%</span>
+                  </div>
+                  <div style={{ height: "6px", background: "rgba(255,255,255,0.06)", borderRadius: "10px", overflow: "hidden" }}>
+                    <div
+                      style={{
+                        width: `${cat.level}%`,
+                        height: "100%",
+                        background: "linear-gradient(90deg, var(--color-blue), var(--color-orange))",
+                        borderRadius: "10px"
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Flat list of technology tags */}
+                <div className="d-flex flex-wrap gap-2">
                   {cat.items?.map((item) => (
-                    <span key={item} className="skill-badge">{item}</span>
+                    <span key={item} className="skill-badge" style={{ margin: 0 }}>{item}</span>
                   ))}
                 </div>
               </div>
