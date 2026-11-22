@@ -1,0 +1,41 @@
+/* Light Mode Theme */
+:root.light-mode {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --color-blue: #0284c7;
+  --color-blue-dim: rgba(2, 132, 199, 0.1);
+  --color-blue-glow: rgba(2, 132, 199, 0.25);
+  --color-orange: #ea580c;
+  --color-orange-dim: rgba(234, 88, 12, 0.12);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border: rgba(15, 23, 42, 0.1);
+  --border-hover: rgba(2, 132, 199, 0.4);
+  --shadow-blue: 0 0 30px rgba(2, 132, 199, 0.12);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-mode .navbar-custom.scrolled {
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.light-mode .form-input-custom {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.light-mode .skill-badge {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
