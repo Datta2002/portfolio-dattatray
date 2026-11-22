@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/portfolio-dattatray/static/css/main.6c5f83c1.css",
+    "main.js": "/portfolio-dattatray/static/js/main.9b9a405e.js",
+    "static/media/project3.jpg": "/portfolio-dattatray/static/media/project3.88531737458b1f7df0c9.jpg",
+    "static/media/project2.jpg": "/portfolio-dattatray/static/media/project2.59d8e69f30abdcfa250b.jpg",
+    "static/media/project1.jpg": "/portfolio-dattatray/static/media/project1.835aebdd43f367c1d89d.jpg",
+    "static/media/imageprofile.png": "/portfolio-dattatray/static/media/imageprofile.57929f797ae708191003.png",
+    "static/media/logo.png": "/portfolio-dattatray/static/media/logo.ac7e38a2a143df511792.png",
+    "index.html": "/portfolio-dattatray/index.html",
+    "main.6c5f83c1.css.map": "/portfolio-dattatray/static/css/main.6c5f83c1.css.map",
+    "main.9b9a405e.js.map": "/portfolio-dattatray/static/js/main.9b9a405e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c5f83c1.css",
+    "static/js/main.9b9a405e.js"
+  ]
+}
