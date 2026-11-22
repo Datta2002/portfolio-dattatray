@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
 import { NAV_LINKS } from "../data/navLinks";
-import logoImg from "../assets/images/logo.png"; // ✅ Updated from logo.svg
+import logoImg from "../assets/images/logo.png";
 
-function Navbar() {
+function Navbar({ darkMode, toggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false); 
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("home");
- 
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
- 
+
   const handleNav = (href) => {
     setActive(href.replace("#", ""));
     setMobileOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
- 
+
   return (
     <>
       <nav className={`navbar-custom ${scrolled ? "scrolled" : ""}`}>
@@ -39,7 +39,16 @@ function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <button className="btn-orange ms-3" onClick={() => handleNav("#contact")}>
+              <button
+                onClick={toggleTheme}
+                className="btn-blue-outline"
+                style={{ padding: "0.45rem 0.9rem", marginLeft: "0.5rem" }}
+                aria-label="Toggle theme"
+                title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              >
+                <i className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"} />
+              </button>
+              <button className="btn-orange ms-2" onClick={() => handleNav("#contact")}>
                 Let's Talk <i className="fa-solid fa-comments" style={{ marginLeft: "4px" }}></i>
               </button>
             </div>
@@ -49,10 +58,13 @@ function Navbar() {
           </div>
         </div>
       </nav>
- 
+
       <div className={`mobile-overlay ${mobileOpen ? "open" : ""}`} onClick={() => setMobileOpen(false)} />
       <div className={`mobile-menu ${mobileOpen ? "open" : ""}`}>
         <button className="close-menu" onClick={() => setMobileOpen(false)}>✕</button>
+        <button onClick={toggleTheme} className="btn-blue-outline mb-3" style={{ justifyContent: "center" }}>
+          <i className={darkMode ? "fa-solid fa-sun" : "fa-solid fa-moon"} /> {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
         {NAV_LINKS.map((l) => (
           <a
             key={l.href}
