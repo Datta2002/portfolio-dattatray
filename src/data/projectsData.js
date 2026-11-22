@@ -9,7 +9,7 @@ export const PROJECTS_DATA = [
     desc: "A full-stack online examination platform for creating, managing, and attempting tests with real-time result evaluation. Includes secure authentication, role-based access, and efficient question management.",
     tech: ["Spring Boot", "Angular", "MySQL", "REST API", "JWT"],
     category: "Full Stack",
-    github: "https://github.com/Datta2002", // update or keep as default github
+    github: "https://github.com/Datta2002",
     live: "#",
   },
   {
@@ -27,7 +27,25 @@ export const PROJECTS_DATA = [
     desc: "A backend-driven application for managing employee records, roles, and operations with secure authentication. Implements CRUD operations, REST APIs, and efficient database handling.",
     tech: ["Spring Boot", "Java", "MySQL", "REST API", "JPA"],
     category: "Java & Backend",
-    github: "https://github.com/Datta2002/Spring_project.git",
+    github: "https://github.com/Datta2002/Spring_project",
+    live: "#",
+  },
+  {
+    image: project1,
+    title: "Expense Tracker",
+    desc: "Console-based Java expense tracker demonstrating file handling CRUD operations. Features add, view, edit, delete expenses with persistent storage.",
+    tech: ["Java", "File I/O", "OOP"],
+    category: "Java & Backend",
+    github: "https://github.com/Datta2002/expense-tracker",
+    live: "#",
+  },
+  {
+    image: project2,
+    title: "Advanced Java Learning Series",
+    desc: "Comprehensive learning roadmap and demos for Advanced Java covering JDBC, Servlets, JSP, Cookies, and more.",
+    tech: ["Java", "JDBC", "Servlet", "JSP"],
+    category: "Java & Backend",
+    github: "https://github.com/Datta2002/learn-Advanced-Java-with-DD",
     live: "#",
   },
 ];
